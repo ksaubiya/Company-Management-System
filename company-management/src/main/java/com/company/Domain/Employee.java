@@ -1,5 +1,6 @@
 package com.company.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -8,7 +9,8 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name="employee")
-public class Employee {
+@JsonIgnoreProperties(value = {"createdByUser", "createdAt", "updatedByUser", "updatedAt"})
+public class Employee extends AbstractAuditingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
