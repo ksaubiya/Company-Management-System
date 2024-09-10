@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="20240903030125" author="saubiya">
+        <createTable tableName="employee">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="mobile" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="address" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="date_of_birth" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="qualification" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="experience" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="date_of_joining" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="active" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="salary" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="profile" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_by_user" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_at" type="datetime" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_by_user" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="dept_id" type="bigint">
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="dept_id"
+                                 baseTableName="employee"
+                                 constraintName="fk_dept_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="department"/>
+    </changeSet>
+
+
+</databaseChangeLog>
+
+
+
+
